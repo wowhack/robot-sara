@@ -19,8 +19,8 @@ def with_retry(&block)
 end
 
 get '/status' do
+  status 200
   "ok"
-   status 200
 end
 
 get '/perform_action' do

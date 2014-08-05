@@ -35,7 +35,7 @@
 {
     RSVocaliser *vocaliser = [RSVocaliser new];
     vocaliser.delegate = self;
-    [vocaliser speak:@"Hi! I'm awake. How are you today Aaron."];
+    [vocaliser speak:@"Hi! How are you today Aaron."];
 }
 
 - (void)didFinishSpeakingString
