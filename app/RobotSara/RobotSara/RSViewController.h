@@ -9,6 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <SpeechKit/SpeechKit.h>
 
-@interface RSViewController : UIViewController<SpeechKitDelegate, SKRecognizerDelegate>
+@interface RSViewController : UIViewController<SpeechKitDelegate, SKRecognizerDelegate> {
+
+    SKRecognizer* voiceSearch;
+    
+    enum {
+        TS_IDLE,
+        TS_INITIAL,
+        TS_RECORDING,
+        TS_PROCESSING,
+    } transactionState;
+}
+
+@property(nonatomic,retain) IBOutlet UILabel* resultsLabel;
+- (IBAction)recordButtonAction: (id)sender;
 
 @end

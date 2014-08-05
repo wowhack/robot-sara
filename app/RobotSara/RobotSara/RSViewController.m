@@ -19,13 +19,152 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    [SpeechKit setupWithID:@"NMDPTRIAL_aaronrandall20140725125308"
+                      host:@"sandbox.nmdp.nuancemobility.net"
+                      port:443
+                    useSSL:NO
+                  delegate:self];
+    
+    [self startRecording];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+#pragma mark SKRecognizerDelegate methods
+
+- (void)recognizerDidBeginRecording:(SKRecognizer *)recognizer
+{
+    NSLog(@"Recording started.");
+    
+    transactionState = TS_RECORDING;
+    //[recordButton setTitle:@"Recording..." forState:UIControlStateNormal];
+    //[self performSelector:@selector(updateVUMeter) withObject:nil afterDelay:0.05];
+}
+
+- (void)recognizerDidFinishRecording:(SKRecognizer *)recognizer
+{
+    NSLog(@"Recording finished.");
+    
+    //[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateVUMeter) object:nil];
+    //[self setVUMeterWidth:0.];
+    transactionState = TS_PROCESSING;
+    //[recordButton setTitle:@"Processing..." forState:UIControlStateNormal];
+}
+
+- (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
+{
+    NSLog(@"Got results.");
+    NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
+    
+    //long numOfResults = [results.results count];
+    
+    transactionState = TS_IDLE;
+    //[recordButton setTitle:@"Record" forState:UIControlStateNormal];
+    
+    //
+    //    searchBox.text = [results firstResult];
+    
+	//if (numOfResults > 1)
+	//	alternativesDisplay.text = [[results.results subarrayWithRange:NSMakeRange(1, numOfResults-1)] componentsJoinedByString:@"\n"];
+    
+    if (results.suggestion) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggestion"
+                                                        message:results.suggestion
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    long numOfResults = [results.results count];
+    if (numOfResults > 0) {
+        self.resultsLabel.text = [results firstResult];
+    }
+
+	voiceSearch = nil;
+}
+
+- (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
+{
+    NSLog(@"Got error.");
+    NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
+    
+    transactionState = TS_IDLE;
+    //[recordButton setTitle:@"Record" forState:UIControlStateNormal];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:[error localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    if (suggestion) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggestion"
+                                                        message:suggestion
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+    }
+    
+	voiceSearch = nil;
+}
+
+#pragma mark -
+#pragma mark Actions
+
+- (IBAction)recordButtonAction: (id)sender {
+    [self startRecording];
+}
+
+#pragma mark -
+#pragma mark Helper Methods
+
+- (void)startRecording
+{
+    self.resultsLabel.text = @"";
+    
+    if (transactionState == TS_IDLE) {
+        SKEndOfSpeechDetection detectionType;
+        NSString* recoType;
+        NSString* langType;
+        
+        transactionState = TS_INITIAL;
+        
+		//alternativesDisplay.text = @"";
+        
+        // AR: let's go with search speech detection for the time being
+        detectionType = SKShortEndOfSpeechDetection;
+        recoType = SKSearchRecognizerType;
+        langType = @"en_US";
+        
+        
+        //NSLog(@"Recognizing type:'%@' Language Code: '%@' using end-of-speech detection:%d.", recoType, langType, detectionType);
+        
+        if (voiceSearch) {
+            voiceSearch = nil;
+        };
+		
+        voiceSearch = [[SKRecognizer alloc] initWithType:recoType
+                                               detection:detectionType
+                                                language:langType
+                                                delegate:self];
+    }
+}
+
+- (void)stopRecording
+{
+    if (transactionState == TS_RECORDING) {
+        [voiceSearch stopRecording];
+    }
 }
 
 @end
