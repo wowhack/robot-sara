@@ -7,6 +7,7 @@
 //
 
 #import "RSWakeUp.h"
+#import "RSVocaliser.h"
 
 @implementation RSWakeUp
 
@@ -20,6 +21,11 @@
 
 - (void)actionPhrase:(NSString*)phrase
 {
+    // Tell the robot arm to get up
+    // Speak welcome text
+    RSVocaliser *vocaliser = [RSVocaliser new];
+    [vocaliser speak:@"Waking up"];
+    
     NSLog(@"In Action Phrase for RSWakeUp");
 }
 

@@ -23,8 +23,9 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 {
     [super viewDidLoad];
     
-    _brain = [RSBrain new];
-    [self setupSpeechRecorder];
+    [self setupBrain];
+    [self setupSpeechKit];
+    
     [self startRecording];
 }
 
@@ -77,6 +78,8 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
         NSString *phrase = [results firstResult];
         self.resultsLabel.text = phrase;
         
+        NSLog(@"Found phrase: %@", phrase);
+        
         if ([_brain canActionPhrase:phrase]) {
             [_brain actionPhrase:phrase];
         }
@@ -108,7 +111,12 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 #pragma mark -
 #pragma mark Helper Methods
 
-- (void)setupSpeechRecorder
+- (void)setupBrain
+{
+    _brain = [RSBrain new];
+}
+
+- (void)setupSpeechKit
 {
     [SpeechKit setupWithID:@"NMDPTRIAL_aaronrandall20140725125308"
                       host:@"sandbox.nmdp.nuancemobility.net"

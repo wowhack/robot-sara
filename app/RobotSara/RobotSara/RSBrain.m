@@ -25,18 +25,32 @@
 
 - (BOOL)canActionPhrase:(NSString*)phrase
 {
-    // Check each skill to see if the skill supports the phrase
-    for (RSSkill *skill in _skills) {
-        if ([skill canActionPhrase:phrase]) {
-            return YES;
-        }
+    // If we can find a skill that supports the current
+    // phrase, then we can perform an action for the phrase
+    if ([self skillForPhrase:phrase] != nil) {
+        return YES;
     }
     return NO;
 }
 
 - (void)actionPhrase:(NSString*)phrase
 {
-    // Action the phrase with the correct skill class
+    // Action the phrase using the specified skill
+    RSSkill *skill = [self skillForPhrase:phrase];
+    [skill actionPhrase:phrase];
+}
+
+- (RSSkill*)skillForPhrase:(NSString*)phrase
+{
+    // Check each skill to see if the skill supports
+    // the phrase, and return the first match
+    for (RSSkill *skill in _skills) {
+        if ([skill canActionPhrase:phrase]) {
+            return skill;
+        }
+    }
+    
+    return nil;
 }
 
 @end

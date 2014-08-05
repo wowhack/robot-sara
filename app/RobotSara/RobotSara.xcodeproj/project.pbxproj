@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		932B13E91991444E00F70909 /* RSVocaliser.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B13E81991444E00F70909 /* RSVocaliser.m */; };
 		932B5D161991175F00CF56C7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D151991175F00CF56C7 /* AudioToolbox.framework */; };
 		932B5D181991176900CF56C7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D171991176900CF56C7 /* AVFoundation.framework */; };
 		932B5D1A1991177300CF56C7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D191991177300CF56C7 /* CFNetwork.framework */; };
@@ -46,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		83257F964368479582C6C122 /* libPods-RobotSara.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RobotSara.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		932B13E71991444E00F70909 /* RSVocaliser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSVocaliser.h; sourceTree = "<group>"; };
+		932B13E81991444E00F70909 /* RSVocaliser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSVocaliser.m; sourceTree = "<group>"; };
 		932B5D151991175F00CF56C7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		932B5D171991176900CF56C7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		932B5D191991177300CF56C7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -113,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		932B13E6199143D500F70909 /* Vocaliser */ = {
+			isa = PBXGroup;
+			children = (
+				932B13E71991444E00F70909 /* RSVocaliser.h */,
+				932B13E81991444E00F70909 /* RSVocaliser.m */,
+			);
+			name = Vocaliser;
+			sourceTree = "<group>";
+		};
 		932B5D121991127D00CF56C7 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +154,7 @@
 		932B5D22199130B600CF56C7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				932B13E6199143D500F70909 /* Vocaliser */,
 				932B5D231991330100CF56C7 /* Brain */,
 			);
 			name = Classes;
@@ -388,6 +401,7 @@
 				932B5D301991343400CF56C7 /* RSSleep.m in Sources */,
 				93BE6E081990ED5800F73F01 /* RSAppDelegate.m in Sources */,
 				932B5D2D1991337B00CF56C7 /* RSWakeUp.m in Sources */,
+				932B13E91991444E00F70909 /* RSVocaliser.m in Sources */,
 				93BE6E0E1990ED5800F73F01 /* RSViewController.m in Sources */,
 				932B5D2A1991334B00CF56C7 /* RSSkill.m in Sources */,
 			);
