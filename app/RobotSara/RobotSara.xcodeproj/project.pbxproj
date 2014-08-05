@@ -19,6 +19,7 @@
 		932B5D2A1991334B00CF56C7 /* RSSkill.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B5D291991334B00CF56C7 /* RSSkill.m */; };
 		932B5D2D1991337B00CF56C7 /* RSWakeUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B5D2C1991337B00CF56C7 /* RSWakeUp.m */; };
 		932B5D301991343400CF56C7 /* RSSleep.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B5D2F1991343400CF56C7 /* RSSleep.m */; };
+		935EA65219917FEB00A65931 /* RSRecommendations.m in Sources */ = {isa = PBXBuildFile; fileRef = 935EA65119917FEB00A65931 /* RSRecommendations.m */; };
 		93BE6DF81990ED5800F73F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF71990ED5800F73F01 /* Foundation.framework */; };
 		93BE6DFA1990ED5800F73F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */; };
 		93BE6DFC1990ED5800F73F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DFB1990ED5800F73F01 /* UIKit.framework */; };
@@ -70,6 +71,8 @@
 		932B5D2C1991337B00CF56C7 /* RSWakeUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWakeUp.m; sourceTree = "<group>"; };
 		932B5D2E1991343400CF56C7 /* RSSleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSleep.h; sourceTree = "<group>"; };
 		932B5D2F1991343400CF56C7 /* RSSleep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSleep.m; sourceTree = "<group>"; };
+		935EA65019917FEB00A65931 /* RSRecommendations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRecommendations.h; sourceTree = "<group>"; };
+		935EA65119917FEB00A65931 /* RSRecommendations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRecommendations.m; sourceTree = "<group>"; };
 		93BE6DF41990ED5800F73F01 /* RobotSara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotSara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BE6DF71990ED5800F73F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -200,6 +203,8 @@
 				932B5D2C1991337B00CF56C7 /* RSWakeUp.m */,
 				932B5D2E1991343400CF56C7 /* RSSleep.h */,
 				932B5D2F1991343400CF56C7 /* RSSleep.m */,
+				935EA65019917FEB00A65931 /* RSRecommendations.h */,
+				935EA65119917FEB00A65931 /* RSRecommendations.m */,
 			);
 			name = Skills;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				932B13E91991444E00F70909 /* RSVocaliser.m in Sources */,
 				93BE6E0E1990ED5800F73F01 /* RSViewController.m in Sources */,
 				932B5D2A1991334B00CF56C7 /* RSSkill.m in Sources */,
+				935EA65219917FEB00A65931 /* RSRecommendations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
