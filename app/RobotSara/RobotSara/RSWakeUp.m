@@ -9,6 +9,7 @@
 #import "RSWakeUp.h"
 #import "RSVocaliser.h"
 #import "RSRoboticArm.h"
+#import "RSSpotify.h"
 
 @implementation RSWakeUp
 
@@ -25,6 +26,8 @@
 - (void)actionPhrase:(NSString*)phrase
 {
     NSLog(@"In Action Phrase for RSWakeUp");
+    
+    [RSSpotify play];
     
     RSRoboticArm *roboticArm = [RSRoboticArm new];
     roboticArm.delegate = self;

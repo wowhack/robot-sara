@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Spotify/Spotify.h>
 
 @interface RSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, readwrite) SPTTrackPlayer *trackPlayer;
+@property (nonatomic, strong) SPTSession *spotifySession;
 
 @end

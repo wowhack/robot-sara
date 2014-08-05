@@ -8,11 +8,24 @@
 
 #import "RSAppDelegate.h"
 
+static NSString * const kClientId = @"2e9be8332fd743f3ab202f46eaa44165";
+static NSString * const kCallbackURL = @"robot-sara://callback";
+static NSString * const kSpotifyExchangeIP = @"10.47.12.108";
+static NSString * const kSpotifyExchangePort = @"1026";
+
 @implementation RSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // Create SPTAuth instance; create login URL and open it
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    NSURL *loginURL = [auth loginURLForClientId:kClientId
+                            declaredRedirectURL:[NSURL URLWithString:kCallbackURL]
+                                         scopes:@[SPTAuthStreamingScope]];
+    // Opening a URL in Safari close to application launch may trigger
+    // an iOS bug, so we wait a bit before doing so.
+    [application performSelector:@selector(openURL:)
+                      withObject:loginURL afterDelay:0.1];
     return YES;
 }
 							
@@ -41,6 +54,32 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    // Ask SPTAuth if the URL given is a Spotify authentication callback
+    if ([[SPTAuth defaultInstance] canHandleURL:url withDeclaredRedirectURL:[NSURL URLWithString:kCallbackURL]]) {
+        
+        NSString *exchangeUrl = [NSString stringWithFormat:@"http://%@:%@/swap",kSpotifyExchangeIP, kSpotifyExchangePort];
+        
+        // Call the token swap service to get a logged in session
+        [[SPTAuth defaultInstance]
+         handleAuthCallbackWithTriggeredAuthURL:url
+         tokenSwapServiceEndpointAtURL:[NSURL URLWithString:exchangeUrl]
+         callback:^(NSError *error, SPTSession *session) {
+             
+             if (error != nil) {
+                 NSLog(@"*** Auth error: %@", error);
+                 return;
+             }
+             
+             self.spotifySession = session;
+         }];
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end
