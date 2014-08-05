@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RSSkill : NSObject
+@interface RSSkill : NSObject {
+    NSArray *phrases;
+}
 
 - (BOOL)canActionPhrase:(NSString*)phrase;
 - (void)actionPhrase:(NSString*)phrase;

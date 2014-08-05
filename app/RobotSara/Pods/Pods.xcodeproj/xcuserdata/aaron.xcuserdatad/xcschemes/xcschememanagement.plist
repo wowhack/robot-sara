@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-RobotSara-StringScore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-RobotSara.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2129E059A386474FAD630191</key>
+		<key>68181135FA2C4592AFD9D179</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D7AE5EC8903B467BA9E1B453</key>
+		<key>8F396AD7B5CA4464A0BC44FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D2405D2B8B74440BBAE474D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

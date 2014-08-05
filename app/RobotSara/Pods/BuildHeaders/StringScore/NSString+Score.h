@@ -1,0 +1,1 @@
+../../StringScore/NSString+Score.h

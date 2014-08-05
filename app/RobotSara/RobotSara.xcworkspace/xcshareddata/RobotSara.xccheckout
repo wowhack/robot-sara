@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8EDBDC5C-45D7-44F4-B54B-E56C049D36E0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RobotSara</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E0919410-6504-4280-BD4F-D0D8B5C924C1</key>
+		<string>https://github.com/wowhack/robot-sara.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>app/RobotSara/RobotSara.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E0919410-6504-4280-BD4F-D0D8B5C924C1</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/wowhack/robot-sara.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E0919410-6504-4280-BD4F-D0D8B5C924C1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E0919410-6504-4280-BD4F-D0D8B5C924C1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>robot-sara</string>
+		</dict>
+	</array>
+</dict>
+</plist>

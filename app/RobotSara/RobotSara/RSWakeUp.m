@@ -10,14 +10,17 @@
 
 @implementation RSWakeUp
 
-- (BOOL)canActionPhrase:(NSString*)phrase
-{
-    return NO;
+- (id)init {
+    if (self = [super init]) {
+        phrases = @[@"wake up",
+                    @"wake"];
+    }
+    return self;
 }
 
 - (void)actionPhrase:(NSString*)phrase
 {
-    NSLog(@"In Action Phrase");
+    NSLog(@"In Action Phrase for RSWakeUp");
 }
 
 @end

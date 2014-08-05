@@ -7,11 +7,22 @@
 //
 
 #import "RSSkill.h"
+#import <StringScore/NSString+Score.h>
 
 @implementation RSSkill
 
 - (BOOL)canActionPhrase:(NSString*)phrase
 {
+    float matchingThreshold = 0.7f;
+    
+    for (NSString *supportedPhrase in phrases) {
+        float matchingScore = [[phrase lowercaseString]
+                               scoreAgainst:[supportedPhrase lowercaseString]
+                               fuzziness:[NSNumber numberWithFloat:0.8]];
+        if (matchingScore > matchingThreshold) {
+            return YES;
+        }
+    }
     return NO;
 }
 
