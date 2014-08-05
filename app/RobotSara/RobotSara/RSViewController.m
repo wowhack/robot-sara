@@ -32,7 +32,6 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark -
@@ -64,23 +63,19 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     NSLog(@"Got results.");
     NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
     
-    //long numOfResults = [results.results count];
-    
     transactionState = TS_IDLE;
     [self displayStateChange];
-    //[recordButton setTitle:@"Record" forState:UIControlStateNormal];
+
     
-    //
-    //    searchBox.text = [results firstResult];
+    long numOfResults = [results.results count];
     
-	//if (numOfResults > 1)
-	//	alternativesDisplay.text = [[results.results subarrayWithRange:NSMakeRange(1, numOfResults-1)] componentsJoinedByString:@"\n"];
+    if (numOfResults > 1)
+		self.suggestionsLabel.text = [[results.results subarrayWithRange:NSMakeRange(1, numOfResults-1)] componentsJoinedByString:@"\n"];
     
     if (results.suggestion) {
         self.debugLabel.text = results.suggestion;
     }
     
-    long numOfResults = [results.results count];
     if (numOfResults > 0) {
         self.resultsLabel.text = [results firstResult];
     }

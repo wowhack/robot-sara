@@ -22,8 +22,8 @@
 }
 
 @property(nonatomic,retain) IBOutlet UILabel* resultsLabel;
+@property(nonatomic,retain) IBOutlet UILabel* suggestionsLabel;
 @property(nonatomic,retain) IBOutlet UILabel* stateLabel;
 @property(nonatomic,retain) IBOutlet UILabel* debugLabel;
-- (IBAction)recordButtonAction: (id)sender;
 
 @end
