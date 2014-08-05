@@ -13,12 +13,17 @@
 
 - (BOOL)canActionPhrase:(NSString*)phrase
 {
-    float matchingThreshold = 0.7f;
+    float matchingThreshold = 0.6f;
     
     for (NSString *supportedPhrase in phrases) {
         float matchingScore = [[phrase lowercaseString]
                                scoreAgainst:[supportedPhrase lowercaseString]
                                fuzziness:[NSNumber numberWithFloat:0.8]];
+        
+        NSLog(@"************************");
+        NSLog(@"Matching score=%f for '%@' against '%@'", matchingScore, phrase, supportedPhrase);
+        NSLog(@"************************");
+        
         if (matchingScore > matchingThreshold) {
             return YES;
         }

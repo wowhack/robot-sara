@@ -25,13 +25,13 @@
     else {
         _isSpeaking = YES;
 		// Initializes an english voice
-        _vocalizer = [[SKVocalizer alloc] initWithLanguage:@"en_US" delegate:self];
+        // _vocalizer = [[SKVocalizer alloc] initWithLanguage:@"en_US" delegate:self];
         
 		// Initializes a french voice
-		// vocalizer = [[SKVocalizer alloc] initWithLanguage:@"fr_FR" delegate:self];
+		// _vocalizer = [[SKVocalizer alloc] initWithLanguage:@"fr_FR" delegate:self];
 		
 		// Initializes a SKVocalizer with a specific voice
-		// vocalizer = [[SKVocalizer alloc] initWithVoice:@"Samantha" delegate:self];
+        _vocalizer = [[SKVocalizer alloc] initWithVoice:@"Samantha" delegate:self];
 		
 		// Speaks the string text
         [_vocalizer speakString:phrase];
