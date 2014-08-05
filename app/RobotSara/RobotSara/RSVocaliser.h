@@ -6,12 +6,14 @@
 //  Copyright (c) 2014 AaronRandall. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <SpeechKit/SpeechKit.h>
+#import "RSVocaliserDelegate.h"
 
 @interface RSVocaliser : NSObject<SpeechKitDelegate, SKVocalizerDelegate>
 
 - (void)speak:(NSString*)phrase;
+
+@property (weak, nonatomic) id<RSVocaliserDelegate> delegate;
 
 @end

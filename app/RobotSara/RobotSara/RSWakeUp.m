@@ -8,6 +8,7 @@
 
 #import "RSWakeUp.h"
 #import "RSVocaliser.h"
+#import "RSRoboticArm.h"
 
 @implementation RSWakeUp
 
@@ -21,16 +22,23 @@
 
 - (void)actionPhrase:(NSString*)phrase
 {
-    // Tell the robot arm to get up
-    // Speak welcome text
-    RSVocaliser *vocaliser = [RSVocaliser new];
-    [vocaliser speak:@"Waking up"];
-    
     NSLog(@"In Action Phrase for RSWakeUp");
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.delegate didFinishActioningPhrase];
-    });
+    RSRoboticArm *roboticArm = [RSRoboticArm new];
+    roboticArm.delegate = self;
+    [roboticArm performAction:@"base_right" seconds:1];
+}
+
+- (void)didFinishRoboticArmAction
+{
+    RSVocaliser *vocaliser = [RSVocaliser new];
+    vocaliser.delegate = self;
+    [vocaliser speak:@"Waking up"];
+}
+
+- (void)didFinishSpeakingString
+{
+    [self.delegate didFinishActioningPhrase];
 }
 
 @end

@@ -92,6 +92,8 @@
 											  otherButtonTitles:nil];
 		[alert show];*/
 	}
+    
+    [self.delegate didFinishSpeakingString];
 }
 
 

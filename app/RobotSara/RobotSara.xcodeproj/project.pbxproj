@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		932B13E91991444E00F70909 /* RSVocaliser.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B13E81991444E00F70909 /* RSVocaliser.m */; };
+		932B13F6199158F500F70909 /* RSRoboticArm.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B13F5199158F500F70909 /* RSRoboticArm.m */; };
 		932B5D161991175F00CF56C7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D151991175F00CF56C7 /* AudioToolbox.framework */; };
 		932B5D181991176900CF56C7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D171991176900CF56C7 /* AVFoundation.framework */; };
 		932B5D1A1991177300CF56C7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D191991177300CF56C7 /* CFNetwork.framework */; };
@@ -51,6 +52,10 @@
 		932B13E81991444E00F70909 /* RSVocaliser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSVocaliser.m; sourceTree = "<group>"; };
 		932B13EA199151AD00F70909 /* RSBrainDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSBrainDelegate.h; sourceTree = "<group>"; };
 		932B13ED1991535800F70909 /* RSSkillDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSkillDelegate.h; sourceTree = "<group>"; };
+		932B13F0199155FD00F70909 /* RSVocaliserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSVocaliserDelegate.h; sourceTree = "<group>"; };
+		932B13F4199158F500F70909 /* RSRoboticArm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRoboticArm.h; sourceTree = "<group>"; };
+		932B13F5199158F500F70909 /* RSRoboticArm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRoboticArm.m; sourceTree = "<group>"; };
+		932B13F7199161B000F70909 /* RSRoboticArmDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRoboticArmDelegate.h; sourceTree = "<group>"; };
 		932B5D151991175F00CF56C7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		932B5D171991176900CF56C7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		932B5D191991177300CF56C7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -123,8 +128,19 @@
 			children = (
 				932B13E71991444E00F70909 /* RSVocaliser.h */,
 				932B13E81991444E00F70909 /* RSVocaliser.m */,
+				932B13F0199155FD00F70909 /* RSVocaliserDelegate.h */,
 			);
 			name = Vocaliser;
+			sourceTree = "<group>";
+		};
+		932B13F3199158D700F70909 /* RoboticArm */ = {
+			isa = PBXGroup;
+			children = (
+				932B13F4199158F500F70909 /* RSRoboticArm.h */,
+				932B13F5199158F500F70909 /* RSRoboticArm.m */,
+				932B13F7199161B000F70909 /* RSRoboticArmDelegate.h */,
+			);
+			name = RoboticArm;
 			sourceTree = "<group>";
 		};
 		932B5D121991127D00CF56C7 /* Application */ = {
@@ -156,6 +172,7 @@
 		932B5D22199130B600CF56C7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				932B13F3199158D700F70909 /* RoboticArm */,
 				932B13E6199143D500F70909 /* Vocaliser */,
 				932B5D231991330100CF56C7 /* Brain */,
 			);
@@ -401,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BE6E041990ED5800F73F01 /* main.m in Sources */,
+				932B13F6199158F500F70909 /* RSRoboticArm.m in Sources */,
 				932B5D261991332300CF56C7 /* RSBrain.m in Sources */,
 				932B5D301991343400CF56C7 /* RSSleep.m in Sources */,
 				93BE6E081990ED5800F73F01 /* RSAppDelegate.m in Sources */,

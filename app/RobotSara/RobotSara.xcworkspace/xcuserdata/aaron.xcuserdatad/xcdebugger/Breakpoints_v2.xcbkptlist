@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RobotSara/RSWakeUp.m"
-            timestampString = "428954902.330674"
+            timestampString = "428958351.642073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -490,12 +490,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RobotSara/RSWakeUp.m"
-            timestampString = "428955009.840881"
+            timestampString = "428958351.642073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-actionPhrase:"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-didFinishSpeakingString"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RobotSara/RSRoboticArm.m"
+            timestampString = "428958351.642073"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "-performAction:seconds:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RobotSara/RSRoboticArm.m"
+            timestampString = "428958351.642073"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "-performAction:seconds:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
