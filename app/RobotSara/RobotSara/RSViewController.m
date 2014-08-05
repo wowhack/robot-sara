@@ -20,12 +20,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 {
     [super viewDidLoad];
     
-    [SpeechKit setupWithID:@"NMDPTRIAL_aaronrandall20140725125308"
-                      host:@"sandbox.nmdp.nuancemobility.net"
-                      port:443
-                    useSSL:NO
-                  delegate:self];
-    
+    [self setupSpeechRecorder];
     [self startRecording];
 }
 
@@ -43,25 +38,23 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     
     transactionState = TS_RECORDING;
     [self displayStateChange];
-    //[recordButton setTitle:@"Recording..." forState:UIControlStateNormal];
-    [self performSelector:@selector(updateVUMeter) withObject:nil afterDelay:0.05];
+    [self performSelector:@selector(updateAudioMeter) withObject:nil afterDelay:0.05];
 }
 
 - (void)recognizerDidFinishRecording:(SKRecognizer *)recognizer
 {
     NSLog(@"Recording finished.");
     
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateVUMeter) object:nil];
-    [self setVUMeterWidth:0.];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateAudioMeter) object:nil];
+    [self setAudioMeterWidth:0.];
+    
     transactionState = TS_PROCESSING;
     [self displayStateChange];
-    //[recordButton setTitle:@"Processing..." forState:UIControlStateNormal];
 }
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
 {
     NSLog(@"Got results.");
-    NSLog(@"Session id [%@].", [SpeechKit sessionID]);
     
     transactionState = TS_IDLE;
     [self displayStateChange];
@@ -88,7 +81,6 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
 {
     NSLog(@"Got error.");
-    NSLog(@"Session id [%@].", [SpeechKit sessionID]);
     
     transactionState = TS_IDLE;
     [self displayStateChange];
@@ -107,14 +99,20 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 #pragma mark -
 #pragma mark Helper Methods
 
+- (void)setupSpeechRecorder
+{
+    [SpeechKit setupWithID:@"NMDPTRIAL_aaronrandall20140725125308"
+                      host:@"sandbox.nmdp.nuancemobility.net"
+                      port:443
+                    useSSL:NO
+                  delegate:self];
+}
+
 - (void)startRecording
 {
-    // Need to dispatch the listening on the main thread after a delay, otherwise
-    // the Nuance lib crashes.
+    // Need to dispatch the listening on the main thread after a delay, otherwise the Nuance lib crashes.
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        NSLog(@"STARTED LISTENING ON MAIN THREAD");
-        self.resultsLabel.text = @"";
+        NSLog(@"Started listening.");
         
         if (transactionState == TS_IDLE) {
             SKEndOfSpeechDetection detectionType;
@@ -127,7 +125,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
             // Let's go with search speech detection for the time being
             detectionType = SKShortEndOfSpeechDetection;
             recoType = SKSearchRecognizerType;
-            langType = @"en_US";
+            langType = @"en_GB";
             
             if (voiceSearch) {
                 voiceSearch = nil;
@@ -147,6 +145,9 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
         [voiceSearch stopRecording];
     }
 }
+
+#pragma mark -
+#pragma mark UI Methods
 
 - (void)displayStateChange
 {
@@ -172,20 +173,20 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 }
 
 #pragma mark -
-#pragma mark VU Meter
+#pragma mark Audio Meter
 
-- (void)setVUMeterWidth:(float)width {
+- (void)setAudioMeterWidth:(float)width {
     if (width < 0)
         width = 0;
     
     self.audioLevelProgressView.progress = width;
 }
 
-- (void)updateVUMeter {
+- (void)updateAudioMeter {
     float width = (90 + voiceSearch.audioLevel)/100;
     
-    [self setVUMeterWidth:width];
-    [self performSelector:@selector(updateVUMeter) withObject:nil afterDelay:0.05];
+    [self setAudioMeterWidth:width];
+    [self performSelector:@selector(updateAudioMeter) withObject:nil afterDelay:0.05];
 }
 
 @end
