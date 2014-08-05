@@ -14,7 +14,9 @@
 
 - (id)init {
     if (self = [super init]) {
-        phrases = @[@"wake up",
+        phrases = @[@"sarah wake up",
+                    @"wake up sarah",
+                    @"wake up",
                     @"wake"];
     }
     return self;
@@ -33,7 +35,7 @@
 {
     RSVocaliser *vocaliser = [RSVocaliser new];
     vocaliser.delegate = self;
-    [vocaliser speak:@"Waking up"];
+    [vocaliser speak:@"Hi! I'm awake. How are you today Aaron."];
 }
 
 - (void)didFinishSpeakingString

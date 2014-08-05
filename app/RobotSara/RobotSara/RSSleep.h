@@ -7,7 +7,9 @@
 //
 
 #import "RSSkill.h"
+#import "RSVocaliserDelegate.h"
+#import "RSRoboticArmDelegate.h"
 
-@interface RSSleep : RSSkill
+@interface RSSleep : RSSkill<RSVocaliserDelegate, RSRoboticArmDelegate>
 
 @end
