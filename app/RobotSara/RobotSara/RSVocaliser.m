@@ -69,14 +69,10 @@
 
 - (void)vocalizer:(SKVocalizer *)vocalizer willBeginSpeakingString:(NSString *)text {
     _isSpeaking = YES;
-  //  [speakButton setTitle:@"Stop" forState:UIControlStateNormal];
-	/*if (text)
-		textReadSoFar.text = [[textReadSoFar.text stringByAppendingString:text] stringByAppendingString:@"\n"];*/
 }
 
 - (void)vocalizer:(SKVocalizer *)vocalizer willSpeakTextAtCharacter:(NSUInteger)index ofString:(NSString *)text {
-    NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
-    //textReadSoFar.text = [text substringToIndex:index];
+    NSLog(@"Session id [%@].", [SpeechKit sessionID]);
 }
 
 - (void)vocalizer:(SKVocalizer *)vocalizer didFinishSpeakingString:(NSString *)text withError:(NSError *)error {

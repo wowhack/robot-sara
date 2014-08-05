@@ -26,7 +26,7 @@
     
     RSRoboticArm *roboticArm = [RSRoboticArm new];
     roboticArm.delegate = self;
-    [roboticArm performAction:@"base_right" seconds:1];
+    [roboticArm performAction:@"led_on" seconds:2];
 }
 
 - (void)didFinishRoboticArmAction

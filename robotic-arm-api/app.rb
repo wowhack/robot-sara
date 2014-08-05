@@ -20,6 +20,7 @@ end
 
 get '/status' do
   "ok"
+   status 200
 end
 
 get '/perform_action' do
@@ -30,5 +31,6 @@ get '/perform_action' do
     action_constant = RoboticArm.const_get(action.upcase)
     seconds = seconds.to_f
     robotic_arm.perform_action(action_constant, seconds)
+    status 200
   end
 end
