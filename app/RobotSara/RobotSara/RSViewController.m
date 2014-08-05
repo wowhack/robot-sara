@@ -43,6 +43,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     NSLog(@"Recording started.");
     
     transactionState = TS_RECORDING;
+    [self displayStateChange];
     //[recordButton setTitle:@"Recording..." forState:UIControlStateNormal];
     //[self performSelector:@selector(updateVUMeter) withObject:nil afterDelay:0.05];
 }
@@ -54,6 +55,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     //[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateVUMeter) object:nil];
     //[self setVUMeterWidth:0.];
     transactionState = TS_PROCESSING;
+    [self displayStateChange];
     //[recordButton setTitle:@"Processing..." forState:UIControlStateNormal];
 }
 
@@ -65,6 +67,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     //long numOfResults = [results.results count];
     
     transactionState = TS_IDLE;
+    [self displayStateChange];
     //[recordButton setTitle:@"Record" forState:UIControlStateNormal];
     
     //
@@ -74,12 +77,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 	//	alternativesDisplay.text = [[results.results subarrayWithRange:NSMakeRange(1, numOfResults-1)] componentsJoinedByString:@"\n"];
     
     if (results.suggestion) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggestion"
-                                                        message:results.suggestion
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        self.debugLabel.text = results.suggestion;
     }
     
     long numOfResults = [results.results count];
@@ -98,26 +96,18 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
     
     transactionState = TS_IDLE;
+    [self displayStateChange];
     //[recordButton setTitle:@"Record" forState:UIControlStateNormal];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:[error localizedDescription]
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+    self.debugLabel.text = [error localizedDescription];
     
     if (suggestion) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggestion"
-                                                        message:suggestion
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        
+        self.debugLabel.text = suggestion;
     }
     
 	voiceSearch = nil;
+    
+    [self startRecording];
 }
 
 #pragma mark -
@@ -145,6 +135,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
             NSString* langType;
             
             transactionState = TS_INITIAL;
+            [self displayStateChange];
             
             //alternativesDisplay.text = @"";
             
@@ -165,7 +156,6 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
                                                     language:langType
                                                     delegate:self];
         }
-
     });
 }
 
@@ -174,6 +164,29 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     if (transactionState == TS_RECORDING) {
         [voiceSearch stopRecording];
     }
+}
+
+- (void)displayStateChange
+{
+    NSString *stateText = @"";
+    
+    switch (transactionState) {
+        case TS_IDLE:
+            stateText = @"Idle";
+            break;
+        case TS_INITIAL:
+            stateText = @"Initial";
+            break;
+        case TS_PROCESSING:
+            stateText = @"Processing";
+            break;
+        case TS_RECORDING:
+            stateText = @"Recording";
+        default:
+            break;
+    }
+    
+    self.stateLabel.text = stateText;
 }
 
 @end
