@@ -88,6 +88,8 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     }
 
 	voiceSearch = nil;
+    
+    [self startRecording];
 }
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
@@ -130,34 +132,41 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 
 - (void)startRecording
 {
-    self.resultsLabel.text = @"";
-    
-    if (transactionState == TS_IDLE) {
-        SKEndOfSpeechDetection detectionType;
-        NSString* recoType;
-        NSString* langType;
+    // Need to dispatch the listening on the main thread after a delay, otherwise
+    // the Nuance lib crashes.
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        transactionState = TS_INITIAL;
+        NSLog(@"STARTED LISTENING ON MAIN THREAD");
+        self.resultsLabel.text = @"";
         
-		//alternativesDisplay.text = @"";
-        
-        // AR: let's go with search speech detection for the time being
-        detectionType = SKShortEndOfSpeechDetection;
-        recoType = SKSearchRecognizerType;
-        langType = @"en_US";
-        
-        
-        //NSLog(@"Recognizing type:'%@' Language Code: '%@' using end-of-speech detection:%d.", recoType, langType, detectionType);
-        
-        if (voiceSearch) {
-            voiceSearch = nil;
-        };
-		
-        voiceSearch = [[SKRecognizer alloc] initWithType:recoType
-                                               detection:detectionType
-                                                language:langType
-                                                delegate:self];
-    }
+        if (transactionState == TS_IDLE) {
+            SKEndOfSpeechDetection detectionType;
+            NSString* recoType;
+            NSString* langType;
+            
+            transactionState = TS_INITIAL;
+            
+            //alternativesDisplay.text = @"";
+            
+            // AR: let's go with search speech detection for the time being
+            detectionType = SKShortEndOfSpeechDetection;
+            recoType = SKSearchRecognizerType;
+            langType = @"en_US";
+            
+            
+            //NSLog(@"Recognizing type:'%@' Language Code: '%@' using end-of-speech detection:%d.", recoType, langType, detectionType);
+            
+            if (voiceSearch) {
+                voiceSearch = nil;
+            };
+            
+            voiceSearch = [[SKRecognizer alloc] initWithType:recoType
+                                                   detection:detectionType
+                                                    language:langType
+                                                    delegate:self];
+        }
+
+    });
 }
 
 - (void)stopRecording
