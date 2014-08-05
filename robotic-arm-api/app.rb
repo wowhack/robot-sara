@@ -18,8 +18,17 @@ def with_retry(&block)
   end
 end
 
-get '/' do
+get '/status' do
+  "ok"
+end
+
+get '/perform_action' do
+  action  = params[:action]
+  seconds = params[:seconds]
+
   with_retry do
-    robotic_arm.perform_action(RoboticArm::BASE_RIGHT, 1)
+    action_constant = RoboticArm.const_get(action.upcase)
+    seconds = seconds.to_f
+    robotic_arm.perform_action(action_constant, seconds)
   end
 end
