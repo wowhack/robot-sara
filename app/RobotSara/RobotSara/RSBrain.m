@@ -17,10 +17,16 @@
 
 - (id)init {
     if (self = [super init]) {
-        _skills = @[[RSWakeUp new],
-                    [RSSleep new]];
+        _skills = @[[self setupSkill:[RSWakeUp new]],
+                    [self setupSkill:[RSSleep new]]];
     }
     return self;
+}
+
+- (RSSkill*)setupSkill:(RSSkill*)skill
+{
+    skill.delegate = self;
+    return skill;
 }
 
 - (BOOL)canActionPhrase:(NSString*)phrase
@@ -51,6 +57,15 @@
     }
     
     return nil;
+}
+
+#pragma mark -
+#pragma mark RSSkillDelegate methods
+
+- (void)didFinishActioningPhrase
+{
+    // The skill finished actioning, let the rest of the app know
+    [self.delegate didFinishActioningPhrase];
 }
 
 @end

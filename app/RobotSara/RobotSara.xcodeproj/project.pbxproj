@@ -49,6 +49,8 @@
 		83257F964368479582C6C122 /* libPods-RobotSara.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RobotSara.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		932B13E71991444E00F70909 /* RSVocaliser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSVocaliser.h; sourceTree = "<group>"; };
 		932B13E81991444E00F70909 /* RSVocaliser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSVocaliser.m; sourceTree = "<group>"; };
+		932B13EA199151AD00F70909 /* RSBrainDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSBrainDelegate.h; sourceTree = "<group>"; };
+		932B13ED1991535800F70909 /* RSSkillDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSkillDelegate.h; sourceTree = "<group>"; };
 		932B5D151991175F00CF56C7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		932B5D171991176900CF56C7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		932B5D191991177300CF56C7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -166,6 +168,7 @@
 				932B5D271991332800CF56C7 /* Skills */,
 				932B5D241991332300CF56C7 /* RSBrain.h */,
 				932B5D251991332300CF56C7 /* RSBrain.m */,
+				932B13EA199151AD00F70909 /* RSBrainDelegate.h */,
 			);
 			name = Brain;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			children = (
 				932B5D281991334B00CF56C7 /* RSSkill.h */,
 				932B5D291991334B00CF56C7 /* RSSkill.m */,
+				932B13ED1991535800F70909 /* RSSkillDelegate.h */,
 				932B5D2B1991337B00CF56C7 /* RSWakeUp.h */,
 				932B5D2C1991337B00CF56C7 /* RSWakeUp.m */,
 				932B5D2E1991343400CF56C7 /* RSSleep.h */,

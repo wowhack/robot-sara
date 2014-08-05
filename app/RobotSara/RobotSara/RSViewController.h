@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <SpeechKit/SpeechKit.h>
+#import "RSBrainDelegate.h"
 
-@interface RSViewController : UIViewController<SpeechKitDelegate, SKRecognizerDelegate> {
+@interface RSViewController : UIViewController<SpeechKitDelegate, SKRecognizerDelegate, RSBrainDelegate> {
 
     SKRecognizer* voiceSearch;
     

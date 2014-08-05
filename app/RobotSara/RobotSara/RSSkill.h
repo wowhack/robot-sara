@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 AaronRandall. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "RSSkillDelegate.h"
 
 @interface RSSkill : NSObject {
     NSArray *phrases;
@@ -14,5 +14,7 @@
 
 - (BOOL)canActionPhrase:(NSString*)phrase;
 - (void)actionPhrase:(NSString*)phrase;
+
+@property (weak, nonatomic) id<RSSkillDelegate> delegate;
 
 @end

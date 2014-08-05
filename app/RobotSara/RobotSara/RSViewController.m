@@ -35,6 +35,14 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 }
 
 #pragma mark -
+#pragma mark RSBrainDelegate methods
+
+- (void)didFinishActioningPhrase
+{
+    [self startRecording];
+}
+
+#pragma mark -
 #pragma mark SKRecognizerDelegate methods
 
 - (void)recognizerDidBeginRecording:(SKRecognizer *)recognizer
@@ -82,12 +90,14 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
         
         if ([_brain canActionPhrase:phrase]) {
             [_brain actionPhrase:phrase];
+        } else {
+            [self startRecording];
         }
+    } else {
+        [self startRecording];
     }
-
-	voiceSearch = nil;
     
-    [self startRecording];
+    voiceSearch = nil;
 }
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
@@ -114,6 +124,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 - (void)setupBrain
 {
     _brain = [RSBrain new];
+    _brain.delegate = self;
 }
 
 - (void)setupSpeechKit
