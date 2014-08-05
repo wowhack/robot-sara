@@ -13,6 +13,10 @@
 		932B5D1C199117E100CF56C7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D1B199117E100CF56C7 /* Security.framework */; };
 		932B5D1E1991182800CF56C7 /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D1D1991182800CF56C7 /* SpeechKit.framework */; };
 		932B5D201991184900CF56C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D1F1991184900CF56C7 /* SystemConfiguration.framework */; };
+		932B5D261991332300CF56C7 /* RSBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B5D251991332300CF56C7 /* RSBrain.m */; };
+		932B5D2A1991334B00CF56C7 /* RSSkill.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B5D291991334B00CF56C7 /* RSSkill.m */; };
+		932B5D2D1991337B00CF56C7 /* RSWakeUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B5D2C1991337B00CF56C7 /* RSWakeUp.m */; };
+		932B5D301991343400CF56C7 /* RSSleep.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B5D2F1991343400CF56C7 /* RSSleep.m */; };
 		93BE6DF81990ED5800F73F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF71990ED5800F73F01 /* Foundation.framework */; };
 		93BE6DFA1990ED5800F73F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */; };
 		93BE6DFC1990ED5800F73F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DFB1990ED5800F73F01 /* UIKit.framework */; };
@@ -48,6 +52,14 @@
 		932B5D1B199117E100CF56C7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		932B5D1D1991182800CF56C7 /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = Frameworks/SpeechKit.framework; sourceTree = "<group>"; };
 		932B5D1F1991184900CF56C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		932B5D241991332300CF56C7 /* RSBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSBrain.h; sourceTree = "<group>"; };
+		932B5D251991332300CF56C7 /* RSBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSBrain.m; sourceTree = "<group>"; };
+		932B5D281991334B00CF56C7 /* RSSkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSkill.h; sourceTree = "<group>"; };
+		932B5D291991334B00CF56C7 /* RSSkill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSkill.m; sourceTree = "<group>"; };
+		932B5D2B1991337B00CF56C7 /* RSWakeUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWakeUp.h; sourceTree = "<group>"; };
+		932B5D2C1991337B00CF56C7 /* RSWakeUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWakeUp.m; sourceTree = "<group>"; };
+		932B5D2E1991343400CF56C7 /* RSSleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSleep.h; sourceTree = "<group>"; };
+		932B5D2F1991343400CF56C7 /* RSSleep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSleep.m; sourceTree = "<group>"; };
 		93BE6DF41990ED5800F73F01 /* RobotSara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotSara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BE6DF71990ED5800F73F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,6 +139,37 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		932B5D22199130B600CF56C7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				932B5D231991330100CF56C7 /* Brain */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		932B5D231991330100CF56C7 /* Brain */ = {
+			isa = PBXGroup;
+			children = (
+				932B5D271991332800CF56C7 /* Skills */,
+				932B5D241991332300CF56C7 /* RSBrain.h */,
+				932B5D251991332300CF56C7 /* RSBrain.m */,
+			);
+			name = Brain;
+			sourceTree = "<group>";
+		};
+		932B5D271991332800CF56C7 /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				932B5D281991334B00CF56C7 /* RSSkill.h */,
+				932B5D291991334B00CF56C7 /* RSSkill.m */,
+				932B5D2B1991337B00CF56C7 /* RSWakeUp.h */,
+				932B5D2C1991337B00CF56C7 /* RSWakeUp.m */,
+				932B5D2E1991343400CF56C7 /* RSSleep.h */,
+				932B5D2F1991343400CF56C7 /* RSSleep.m */,
+			);
+			name = Skills;
+			sourceTree = "<group>";
+		};
 		93BE6DEB1990ED5800F73F01 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +211,7 @@
 		93BE6DFD1990ED5800F73F01 /* RobotSara */ = {
 			isa = PBXGroup;
 			children = (
+				932B5D22199130B600CF56C7 /* Classes */,
 				932B5D14199112A700CF56C7 /* Views */,
 				932B5D131991129B00CF56C7 /* Controllers */,
 				932B5D121991127D00CF56C7 /* Application */,
@@ -340,8 +384,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BE6E041990ED5800F73F01 /* main.m in Sources */,
+				932B5D261991332300CF56C7 /* RSBrain.m in Sources */,
+				932B5D301991343400CF56C7 /* RSSleep.m in Sources */,
 				93BE6E081990ED5800F73F01 /* RSAppDelegate.m in Sources */,
+				932B5D2D1991337B00CF56C7 /* RSWakeUp.m in Sources */,
 				93BE6E0E1990ED5800F73F01 /* RSViewController.m in Sources */,
+				932B5D2A1991334B00CF56C7 /* RSSkill.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
