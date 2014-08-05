@@ -25,5 +25,6 @@
 @property(nonatomic,retain) IBOutlet UILabel* suggestionsLabel;
 @property(nonatomic,retain) IBOutlet UILabel* stateLabel;
 @property(nonatomic,retain) IBOutlet UILabel* debugLabel;
+@property(nonatomic,retain) IBOutlet UIProgressView* audioLevelProgressView;
 
 @end

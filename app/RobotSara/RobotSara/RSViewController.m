@@ -44,15 +44,15 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     transactionState = TS_RECORDING;
     [self displayStateChange];
     //[recordButton setTitle:@"Recording..." forState:UIControlStateNormal];
-    //[self performSelector:@selector(updateVUMeter) withObject:nil afterDelay:0.05];
+    [self performSelector:@selector(updateVUMeter) withObject:nil afterDelay:0.05];
 }
 
 - (void)recognizerDidFinishRecording:(SKRecognizer *)recognizer
 {
     NSLog(@"Recording finished.");
     
-    //[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateVUMeter) object:nil];
-    //[self setVUMeterWidth:0.];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateVUMeter) object:nil];
+    [self setVUMeterWidth:0.];
     transactionState = TS_PROCESSING;
     [self displayStateChange];
     //[recordButton setTitle:@"Processing..." forState:UIControlStateNormal];
@@ -61,16 +61,16 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
 {
     NSLog(@"Got results.");
-    NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
+    NSLog(@"Session id [%@].", [SpeechKit sessionID]);
     
     transactionState = TS_IDLE;
     [self displayStateChange];
-
     
     long numOfResults = [results.results count];
     
-    if (numOfResults > 1)
+    if (numOfResults > 1) {
 		self.suggestionsLabel.text = [[results.results subarrayWithRange:NSMakeRange(1, numOfResults-1)] componentsJoinedByString:@"\n"];
+    }
     
     if (results.suggestion) {
         self.debugLabel.text = results.suggestion;
@@ -88,11 +88,10 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
 {
     NSLog(@"Got error.");
-    NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
+    NSLog(@"Session id [%@].", [SpeechKit sessionID]);
     
     transactionState = TS_IDLE;
     [self displayStateChange];
-    //[recordButton setTitle:@"Record" forState:UIControlStateNormal];
     
     self.debugLabel.text = [error localizedDescription];
     
@@ -102,13 +101,6 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     
 	voiceSearch = nil;
     
-    [self startRecording];
-}
-
-#pragma mark -
-#pragma mark Actions
-
-- (IBAction)recordButtonAction: (id)sender {
     [self startRecording];
 }
 
@@ -132,15 +124,10 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
             transactionState = TS_INITIAL;
             [self displayStateChange];
             
-            //alternativesDisplay.text = @"";
-            
-            // AR: let's go with search speech detection for the time being
+            // Let's go with search speech detection for the time being
             detectionType = SKShortEndOfSpeechDetection;
             recoType = SKSearchRecognizerType;
             langType = @"en_US";
-            
-            
-            //NSLog(@"Recognizing type:'%@' Language Code: '%@' using end-of-speech detection:%d.", recoType, langType, detectionType);
             
             if (voiceSearch) {
                 voiceSearch = nil;
@@ -182,6 +169,23 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     }
     
     self.stateLabel.text = stateText;
+}
+
+#pragma mark -
+#pragma mark VU Meter
+
+- (void)setVUMeterWidth:(float)width {
+    if (width < 0)
+        width = 0;
+    
+    self.audioLevelProgressView.progress = width;
+}
+
+- (void)updateVUMeter {
+    float width = (90 + voiceSearch.audioLevel)/100;
+    
+    [self setVUMeterWidth:width];
+    [self performSelector:@selector(updateVUMeter) withObject:nil afterDelay:0.05];
 }
 
 @end
