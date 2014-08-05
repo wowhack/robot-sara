@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SpeechKit/SpeechKit.h>
 
-@interface RSViewController : UIViewController
+@interface RSViewController : UIViewController<SpeechKitDelegate, SKRecognizerDelegate>
 
 @end

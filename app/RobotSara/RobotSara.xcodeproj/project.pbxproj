@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		932B5D161991175F00CF56C7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D151991175F00CF56C7 /* AudioToolbox.framework */; };
+		932B5D181991176900CF56C7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D171991176900CF56C7 /* AVFoundation.framework */; };
+		932B5D1A1991177300CF56C7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D191991177300CF56C7 /* CFNetwork.framework */; };
+		932B5D1C199117E100CF56C7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D1B199117E100CF56C7 /* Security.framework */; };
+		932B5D1E1991182800CF56C7 /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D1D1991182800CF56C7 /* SpeechKit.framework */; };
+		932B5D201991184900CF56C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932B5D1F1991184900CF56C7 /* SystemConfiguration.framework */; };
 		93BE6DF81990ED5800F73F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF71990ED5800F73F01 /* Foundation.framework */; };
 		93BE6DFA1990ED5800F73F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */; };
 		93BE6DFC1990ED5800F73F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DFB1990ED5800F73F01 /* UIKit.framework */; };
@@ -36,6 +42,12 @@
 
 /* Begin PBXFileReference section */
 		83257F964368479582C6C122 /* libPods-RobotSara.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RobotSara.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		932B5D151991175F00CF56C7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		932B5D171991176900CF56C7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		932B5D191991177300CF56C7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		932B5D1B199117E100CF56C7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		932B5D1D1991182800CF56C7 /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = Frameworks/SpeechKit.framework; sourceTree = "<group>"; };
+		932B5D1F1991184900CF56C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		93BE6DF41990ED5800F73F01 /* RobotSara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotSara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BE6DF71990ED5800F73F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,7 +75,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				932B5D201991184900CF56C7 /* SystemConfiguration.framework in Frameworks */,
+				932B5D1E1991182800CF56C7 /* SpeechKit.framework in Frameworks */,
+				932B5D1C199117E100CF56C7 /* Security.framework in Frameworks */,
 				93BE6DFA1990ED5800F73F01 /* CoreGraphics.framework in Frameworks */,
+				932B5D1A1991177300CF56C7 /* CFNetwork.framework in Frameworks */,
+				932B5D181991176900CF56C7 /* AVFoundation.framework in Frameworks */,
+				932B5D161991175F00CF56C7 /* AudioToolbox.framework in Frameworks */,
 				93BE6DFC1990ED5800F73F01 /* UIKit.framework in Frameworks */,
 				93BE6DF81990ED5800F73F01 /* Foundation.framework in Frameworks */,
 				F27654BE35B845E98CA5AB25 /* libPods-RobotSara.a in Frameworks */,
@@ -132,6 +150,12 @@
 		93BE6DF61990ED5800F73F01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				932B5D1F1991184900CF56C7 /* SystemConfiguration.framework */,
+				932B5D1D1991182800CF56C7 /* SpeechKit.framework */,
+				932B5D1B199117E100CF56C7 /* Security.framework */,
+				932B5D191991177300CF56C7 /* CFNetwork.framework */,
+				932B5D171991176900CF56C7 /* AVFoundation.framework */,
+				932B5D151991175F00CF56C7 /* AudioToolbox.framework */,
 				93BE6DF71990ED5800F73F01 /* Foundation.framework */,
 				93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */,
 				93BE6DFB1990ED5800F73F01 /* UIKit.framework */,
@@ -441,11 +465,21 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AADED60075C94D7C95AFC518 /* Pods-RobotSara.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RobotSara/RobotSara-Prefix.pch";
 				INFOPLIST_FILE = "RobotSara/RobotSara-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -455,8 +489,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AADED60075C94D7C95AFC518 /* Pods-RobotSara.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RobotSara/RobotSara-Prefix.pch";
 				INFOPLIST_FILE = "RobotSara/RobotSara-Info.plist";
