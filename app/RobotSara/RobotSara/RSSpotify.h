@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <Spotify/Spotify.h>
+#import "RSSpotifyDelegate.h"
 
 @interface RSSpotify : NSObject
 
-+ (void)play;
+- (void)playTrackByArtist:(NSString*)artist;
+- (void)stopPlayingTrack;
+
+@property (weak, nonatomic) id<RSSpotifyDelegate> delegate;
 
 @end

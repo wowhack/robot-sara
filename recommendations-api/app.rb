@@ -1,7 +1,7 @@
 require 'sinatra'
 require_relative 'lib/recommendations.rb'
 
-set :port, 1026
+set :port, 1027
 set :bind, '0.0.0.0'
 
 def recommendations

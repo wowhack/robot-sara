@@ -22,6 +22,7 @@
 		935EA65219917FEB00A65931 /* RSRecommendations.m in Sources */ = {isa = PBXBuildFile; fileRef = 935EA65119917FEB00A65931 /* RSRecommendations.m */; };
 		935EA654199180C300A65931 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935EA653199180C300A65931 /* Spotify.framework */; };
 		935EA658199180FF00A65931 /* RSSpotify.m in Sources */ = {isa = PBXBuildFile; fileRef = 935EA657199180FF00A65931 /* RSSpotify.m */; };
+		935EA65C199214A600A65931 /* RSRecommendationsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 935EA65B199214A600A65931 /* RSRecommendationsAPI.m */; };
 		93BE6DF81990ED5800F73F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF71990ED5800F73F01 /* Foundation.framework */; };
 		93BE6DFA1990ED5800F73F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */; };
 		93BE6DFC1990ED5800F73F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DFB1990ED5800F73F01 /* UIKit.framework */; };
@@ -78,6 +79,9 @@
 		935EA653199180C300A65931 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = Frameworks/Spotify.framework; sourceTree = "<group>"; };
 		935EA656199180FF00A65931 /* RSSpotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSpotify.h; sourceTree = "<group>"; };
 		935EA657199180FF00A65931 /* RSSpotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSpotify.m; sourceTree = "<group>"; };
+		935EA65A199214A600A65931 /* RSRecommendationsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRecommendationsAPI.h; sourceTree = "<group>"; };
+		935EA65B199214A600A65931 /* RSRecommendationsAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRecommendationsAPI.m; sourceTree = "<group>"; };
+		935EA65D19921C9300A65931 /* RSSpotifyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSpotifyDelegate.h; sourceTree = "<group>"; };
 		93BE6DF41990ED5800F73F01 /* RobotSara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotSara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BE6DF71990ED5800F73F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -181,6 +185,7 @@
 		932B5D22199130B600CF56C7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				935EA6591992148D00A65931 /* Recommendations */,
 				935EA655199180EE00A65931 /* Spotify */,
 				932B13F3199158D700F70909 /* RoboticArm */,
 				932B13E6199143D500F70909 /* Vocaliser */,
@@ -221,8 +226,18 @@
 			children = (
 				935EA656199180FF00A65931 /* RSSpotify.h */,
 				935EA657199180FF00A65931 /* RSSpotify.m */,
+				935EA65D19921C9300A65931 /* RSSpotifyDelegate.h */,
 			);
 			name = Spotify;
+			sourceTree = "<group>";
+		};
+		935EA6591992148D00A65931 /* Recommendations */ = {
+			isa = PBXGroup;
+			children = (
+				935EA65A199214A600A65931 /* RSRecommendationsAPI.h */,
+				935EA65B199214A600A65931 /* RSRecommendationsAPI.m */,
+			);
+			name = Recommendations;
 			sourceTree = "<group>";
 		};
 		93BE6DEB1990ED5800F73F01 = {
@@ -447,6 +462,7 @@
 				932B5D2D1991337B00CF56C7 /* RSWakeUp.m in Sources */,
 				932B13E91991444E00F70909 /* RSVocaliser.m in Sources */,
 				93BE6E0E1990ED5800F73F01 /* RSViewController.m in Sources */,
+				935EA65C199214A600A65931 /* RSRecommendationsAPI.m in Sources */,
 				935EA658199180FF00A65931 /* RSSpotify.m in Sources */,
 				932B5D2A1991334B00CF56C7 /* RSSkill.m in Sources */,
 				935EA65219917FEB00A65931 /* RSRecommendations.m in Sources */,

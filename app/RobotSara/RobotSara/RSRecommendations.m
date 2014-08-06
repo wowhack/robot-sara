@@ -9,6 +9,7 @@
 #import "RSRecommendations.h"
 #import "RSVocaliser.h"
 #import "RSRoboticArm.h"
+#import "RSSpotify.h"
 
 @implementation RSRecommendations
 
@@ -21,7 +22,8 @@
                     @"recommendations",
                     @"give me recommendations",
                     @"make some recommendations",
-                    @"can you mix some recommendations"];
+                    @"can you mix some recommendations for me",
+                    @"can you mix some recommendations",];
     }
     return self;
 }
@@ -44,6 +46,15 @@
 
 - (void)didFinishSpeakingString
 {
+    // TODO: go to recommendations service for artist and play count
+    RSSpotify *player = [RSSpotify new];
+    player.delegate = self;
+    [player playTrackByArtist:@"Kanye West"];
+}
+
+- (void)didFinishPlayingTrack
+{
+    NSLog(@"Did finish playing Spotify track");
     [self.delegate didFinishActioningPhrase];
 }
 

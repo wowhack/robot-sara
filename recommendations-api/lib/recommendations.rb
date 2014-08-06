@@ -1,5 +1,14 @@
 class Recommendations
   def all
-    "Here are some recommendations"
+    "{\"results\":
+       {\"recommendations\":[
+         {
+          \"artistName\": \"Nas\",
+          \"sourceArtist\": \"Kanye West\",
+          \"ListensCount\": 12
+         }
+         ],
+       },
+     }"
   end
 end
