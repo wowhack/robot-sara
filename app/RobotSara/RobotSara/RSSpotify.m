@@ -61,7 +61,7 @@
                                     
                                     [appDelegate.trackPlayer playTrackProvider:album fromIndex:6];
                                     [self performSelector:@selector(stopPlayingTrack)
-                                                      withObject:nil afterDelay:25];
+                                                      withObject:nil afterDelay:15];
                                 }];
         }];
     }

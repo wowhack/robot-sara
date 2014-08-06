@@ -23,6 +23,7 @@
         phrases = @[@"sarah can you recommend me some music",
                     @"sarah can you give me some recommendations",
                     @"can you recommend me music",
+                    @"yes recommend me some music please",
                     @"recommend music",
                     @"recommendations",
                     @"recommendation",
@@ -56,7 +57,7 @@
     
     RSVocaliser *vocaliser = [RSVocaliser new];
     vocaliser.delegate = self;
-    [vocaliser speak:[NSString stringWithFormat:@"You've listened to %@ %@ times in the last few days, I've found a similar artist called %@ who you might like. Here's a popular %@ track, hope you like it.", sourceArtist, listensCount, artist, artist]];
+    [vocaliser speak:[NSString stringWithFormat:@"You've listened to %@ %@ times in the last few days, I've found a similar artist called %@ who you might like. Here's a popular %@ track, have a listen.", sourceArtist, listensCount, artist, artist]];
 }
 
 - (void)didFinishRoboticArmAction

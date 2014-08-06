@@ -28,9 +28,17 @@ get '/perform_action' do
   seconds = params[:seconds]
 
   with_retry do
-    action_constant = RoboticArm.const_get(action.upcase)
-    seconds = seconds.to_f
-    robotic_arm.perform_action(action_constant, seconds)
+    if action.upcase == "WAKE_UP"
+      robotic_arm.perform_action(RoboticArm::SHOULDER_DOWN, 2) 
+      robotic_arm.perform_action(RoboticArm::BASE_LEFT, 1.5) 
+    elsif action.upcase == "SLEEP"
+      robotic_arm.perform_action(RoboticArm::BASE_RIGHT, 1.5) 
+      robotic_arm.perform_action(RoboticArm::SHOULDER_UP, 1.4) 
+    else
+      action_constant = RoboticArm.const_get(action.upcase)
+      seconds = seconds.to_f
+      robotic_arm.perform_action(action_constant, seconds)
+    end
     status 200
   end
 end
