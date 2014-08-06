@@ -33,6 +33,10 @@
 
 - (void)didFinishRoboticArmAction
 {
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"SaraAppear"
+     object:nil ];
+    
     RSVocaliser *vocaliser = [RSVocaliser new];
     vocaliser.delegate = self;
     [vocaliser speak:@"Hi! How are you today Aaron."];

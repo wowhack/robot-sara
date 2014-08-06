@@ -13,6 +13,7 @@
 @interface RSViewController : UIViewController<SpeechKitDelegate, SKRecognizerDelegate, RSBrainDelegate> {
 
     SKRecognizer* voiceSearch;
+    IBOutlet UISwitch *audioSwitch;
     
     enum {
         TS_IDLE,

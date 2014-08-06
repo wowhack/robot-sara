@@ -27,14 +27,36 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     
     RSAppDelegate *appDelegate = (RSAppDelegate*)[[UIApplication sharedApplication] delegate];
     
+    // Listen for connection changes to the spotify session,
+    // we can't start recording audio until it's connected
     [appDelegate addObserver:self
                   forKeyPath:@"spotifySession"
                      options:0
                      context:nil];
     
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(eventHandler:)
+     name:@"SaraAppear"
+     object:nil ];
     
     [self setupBrain];
     [self setupSpeechKit];
+}
+
+-(IBAction)audioSwitch:(id)sender{
+    
+    if(audioSwitch.on) {
+        [self startRecording];
+    } else {
+        [self stopRecording];
+    }
+}
+
+//event handler when event occurs
+-(void)eventHandler: (NSNotification *) notification
+{ 
+    NSLog(@"event triggered");
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -155,6 +177,11 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 
 - (void)startRecording
 {
+    if (!audioSwitch.on) {
+        // If the switch is still off, don't start recording
+        return;
+    }
+    
     // Need to dispatch the listening on the main thread after a delay, otherwise the Nuance lib crashes.
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSLog(@"Started listening.");
