@@ -39,11 +39,7 @@
 - (void)actionPhrase:(NSString*)phrase
 {
     NSLog(@"In Action Phrase for RSRecommendations");
-    
-    RSRoboticArm *roboticArm = [RSRoboticArm new];
-    roboticArm.delegate = self;
-    [roboticArm performAction:@"led_on" seconds:2];
-    
+        
     RSRecommendationsAPI *recommendations = [RSRecommendationsAPI new];
     recommendations.delegate = self;
     

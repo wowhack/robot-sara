@@ -12,6 +12,7 @@
 #import "RSWakeUpResponse.h"
 #import "RSSleep.h"
 #import "RSRecommendations.h"
+#import "RSTest.h"
 
 @implementation RSBrain {
     NSArray *_skills;
@@ -19,7 +20,8 @@
 
 - (id)init {
     if (self = [super init]) {
-        _skills = @[[self setupSkill:[RSWakeUp new]],
+        _skills = @[[self setupSkill:[RSTest new]],
+                    [self setupSkill:[RSWakeUp new]],
                     [self setupSkill:[RSWakeUpResponse new]],
                     [self setupSkill:[RSSleep new]],
                     [self setupSkill:[RSRecommendations new]]];
