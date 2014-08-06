@@ -24,33 +24,10 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 {
     [super viewDidLoad];
     
-    
-    RSAppDelegate *appDelegate = (RSAppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    // Listen for connection changes to the spotify session,
-    // we can't start recording audio until it's connected
-    [appDelegate addObserver:self
-                  forKeyPath:@"spotifySession"
-                     options:0
-                     context:nil];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(eventHandler:)
-     name:@"SaraAppear"
-     object:nil ];
-    
+    [self setupSpotifySessionStateChangeObserver];
+    [self setupNotificationObservers];
     [self setupBrain];
     [self setupSpeechKit];
-}
-
--(IBAction)audioSwitch:(id)sender{
-    
-    if(audioSwitch.on) {
-        [self startRecording];
-    } else {
-        [self stopRecording];
-    }
 }
 
 //event handler when event occurs
@@ -160,6 +137,33 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 #pragma mark -
 #pragma mark Helper Methods
 
+- (void)setupSpotifySessionStateChangeObserver
+{
+    RSAppDelegate *appDelegate = (RSAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    // Listen for connection changes to the spotify session,
+    // we can't start recording audio until it's connected
+    [appDelegate addObserver:self
+                  forKeyPath:@"spotifySession"
+                     options:0
+                     context:nil];
+}
+
+- (void)setupNotificationObservers
+{
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(eventHandler:)
+     name:@"SaraAppear"
+     object:nil ];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(eventHandler:)
+     name:@"SaraDisappear"
+     object:nil ];
+}
+
 - (void)setupBrain
 {
     _brain = [RSBrain new];
@@ -220,6 +224,15 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 
 #pragma mark -
 #pragma mark UI Methods
+
+-(IBAction)audioSwitch:(id)sender{
+    
+    if(audioSwitch.on) {
+        [self startRecording];
+    } else {
+        [self stopRecording];
+    }
+}
 
 - (void)displayStateChange
 {
