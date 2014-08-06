@@ -10,4 +10,9 @@
 
 @implementation RSRecommendationsAPI
 
+- (void)fetchRecommendations
+{
+    [self.delegate didFinishFetchingRecommendations:@"Trophy Wife" playCount:1];
+}
+
 @end

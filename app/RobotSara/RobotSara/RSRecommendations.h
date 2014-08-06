@@ -10,7 +10,8 @@
 #import "RSVocaliserDelegate.h"
 #import "RSRoboticArmDelegate.h"
 #import "RSSpotifyDelegate.h"
+#import "RSRecommendationsAPIDelegate.h"
 
-@interface RSRecommendations : RSSkill<RSVocaliserDelegate, RSRoboticArmDelegate, RSSpotifyDelegate>
+@interface RSRecommendations : RSSkill<RSVocaliserDelegate, RSRoboticArmDelegate, RSSpotifyDelegate, RSRecommendationsAPIDelegate>
 
 @end

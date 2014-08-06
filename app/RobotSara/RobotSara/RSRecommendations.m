@@ -10,8 +10,11 @@
 #import "RSVocaliser.h"
 #import "RSRoboticArm.h"
 #import "RSSpotify.h"
+#import "RSRecommendationsAPI.h"
 
-@implementation RSRecommendations
+@implementation RSRecommendations {
+    NSString *_artist;
+}
 
 - (id)init {
     if (self = [super init]) {
@@ -35,13 +38,25 @@
     RSRoboticArm *roboticArm = [RSRoboticArm new];
     roboticArm.delegate = self;
     [roboticArm performAction:@"led_on" seconds:2];
+    
+    RSRecommendationsAPI *recommendations = [RSRecommendationsAPI new];
+    recommendations.delegate = self;
+    
+    [recommendations fetchRecommendations];
+}
+
+- (void)didFinishFetchingRecommendations:(NSString *)artist playCount:(int)playCount
+{
+    _artist = artist;
+    
+    RSVocaliser *vocaliser = [RSVocaliser new];
+    vocaliser.delegate = self;
+    [vocaliser speak:[NSString stringWithFormat:@"I found a recommendation, %@. I'll play a popular track for you now", artist]];
 }
 
 - (void)didFinishRoboticArmAction
 {
-    RSVocaliser *vocaliser = [RSVocaliser new];
-    vocaliser.delegate = self;
-    [vocaliser speak:@"Let me find some recommendations for you"];
+    NSLog(@"Robot arm movement finished");
 }
 
 - (void)didFinishSpeakingString
@@ -49,7 +64,7 @@
     // TODO: go to recommendations service for artist and play count
     RSSpotify *player = [RSSpotify new];
     player.delegate = self;
-    [player playTrackByArtist:@"Kanye West"];
+    [player playTrackByArtist:_artist];
 }
 
 - (void)didFinishPlayingTrack

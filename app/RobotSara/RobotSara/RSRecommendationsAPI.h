@@ -6,6 +6,12 @@
 //  Copyright (c) 2014 AaronRandall. All rights reserved.
 //
 
+#import "RSRecommendationsAPIDelegate.h"
+
 @interface RSRecommendationsAPI : NSObject
+
+- (void)fetchRecommendations;
+
+@property (weak, nonatomic) id<RSRecommendationsAPIDelegate> delegate;
 
 @end

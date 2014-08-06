@@ -41,7 +41,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.30000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="sCP-iP-SKN">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sCP-iP-SKN">
                                 <rect key="frame" x="16" y="546" width="284" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="trackTintColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
