@@ -9,6 +9,7 @@
 #import "RSBrain.h"
 #import "RSSkill.h"
 #import "RSWakeUp.h"
+#import "RSWakeUpResponse.h"
 #import "RSSleep.h"
 #import "RSRecommendations.h"
 
@@ -19,6 +20,7 @@
 - (id)init {
     if (self = [super init]) {
         _skills = @[[self setupSkill:[RSWakeUp new]],
+                    [self setupSkill:[RSWakeUpResponse new]],
                     [self setupSkill:[RSSleep new]],
                     [self setupSkill:[RSRecommendations new]]];
     }

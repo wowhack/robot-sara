@@ -30,7 +30,8 @@
                     @"give me recommendations",
                     @"make some recommendations",
                     @"can you mix some recommendations for me",
-                    @"can you mix some recommendations",];
+                    @"can you mix some recommendations",
+                    @"yes please"];
     }
     return self;
 }
@@ -57,7 +58,7 @@
     
     RSVocaliser *vocaliser = [RSVocaliser new];
     vocaliser.delegate = self;
-    [vocaliser speak:[NSString stringWithFormat:@"You've listened to %@ %@ times in the last few days, I've found a similar artist called %@ who you might like. Here's a popular %@ track, have a listen.", sourceArtist, listensCount, artist, artist]];
+    [vocaliser speak:[NSString stringWithFormat:@"You've listened to %@ %@ times in the last few days. I've found a similar artist called %@ who you might like. Here's a popular %@ track. Enjoy.", sourceArtist, listensCount, artist, artist]];
 }
 
 - (void)didFinishRoboticArmAction
