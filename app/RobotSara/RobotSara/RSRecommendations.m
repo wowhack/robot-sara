@@ -14,6 +14,8 @@
 
 @implementation RSRecommendations {
     NSString *_artist;
+    NSString *_sourceArtist;
+    NSString *_listensCount;
 }
 
 - (id)init {
@@ -45,13 +47,15 @@
     [recommendations fetchRecommendations];
 }
 
-- (void)didFinishFetchingRecommendations:(NSString *)artist playCount:(int)playCount
+- (void)didFinishFetchingRecommendations:(NSString *)artist sourceArtist:(NSString *)sourceArtist listensCount:(NSString *)listensCount
 {
     _artist = artist;
+    _sourceArtist = sourceArtist;
+    _listensCount = listensCount;
     
     RSVocaliser *vocaliser = [RSVocaliser new];
     vocaliser.delegate = self;
-    [vocaliser speak:[NSString stringWithFormat:@"I found a recommendation, %@. I'll play a popular track for you now", artist]];
+    [vocaliser speak:[NSString stringWithFormat:@"I found a recommendation, %@, because you listened to %@ %@ times in the last few days. I'll play a popular track for you now", artist, sourceArtist, listensCount]];
 }
 
 - (void)didFinishRoboticArmAction

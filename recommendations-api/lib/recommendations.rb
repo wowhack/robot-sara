@@ -3,9 +3,9 @@ class Recommendations
     "{\"results\":
        {\"recommendations\":[
          {
-          \"artistName\": \"Nas\",
-          \"sourceArtist\": \"Kanye West\",
-          \"ListensCount\": 12
+          \"artistName\": \"Trophy Wife\",
+          \"sourceArtistName\": \"Summer Heart\",
+          \"listensCount\": \"14\"
          }
          ],
        },

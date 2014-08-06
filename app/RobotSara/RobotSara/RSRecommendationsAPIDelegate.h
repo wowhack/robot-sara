@@ -8,6 +8,6 @@
 
 @protocol RSRecommendationsAPIDelegate <NSObject>
 
-- (void)didFinishFetchingRecommendations:(NSString*)artist playCount:(int)playCount;
+- (void)didFinishFetchingRecommendations:(NSString*)artist sourceArtist:(NSString*)sourceArtist listensCount:(NSString*)listensCount;
 
 @end
