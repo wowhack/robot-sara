@@ -25,6 +25,10 @@
 		935EA65C199214A600A65931 /* RSRecommendationsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 935EA65B199214A600A65931 /* RSRecommendationsAPI.m */; };
 		935EA66519923EC500A65931 /* RSWakeUpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 935EA66419923EC500A65931 /* RSWakeUpResponse.m */; };
 		935EA6681992428000A65931 /* RSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 935EA6671992428000A65931 /* RSTest.m */; };
+		935EA66E19925FAD00A65931 /* good.png in Resources */ = {isa = PBXBuildFile; fileRef = 935EA66A19925FAD00A65931 /* good.png */; };
+		935EA66F19925FAD00A65931 /* listen.png in Resources */ = {isa = PBXBuildFile; fileRef = 935EA66B19925FAD00A65931 /* listen.png */; };
+		935EA67019925FAD00A65931 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 935EA66C19925FAD00A65931 /* play.png */; };
+		935EA67119925FAD00A65931 /* think.png in Resources */ = {isa = PBXBuildFile; fileRef = 935EA66D19925FAD00A65931 /* think.png */; };
 		93BE6DF81990ED5800F73F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF71990ED5800F73F01 /* Foundation.framework */; };
 		93BE6DFA1990ED5800F73F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */; };
 		93BE6DFC1990ED5800F73F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE6DFB1990ED5800F73F01 /* UIKit.framework */; };
@@ -89,6 +93,10 @@
 		935EA66419923EC500A65931 /* RSWakeUpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWakeUpResponse.m; sourceTree = "<group>"; };
 		935EA6661992428000A65931 /* RSTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTest.h; sourceTree = "<group>"; };
 		935EA6671992428000A65931 /* RSTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTest.m; sourceTree = "<group>"; };
+		935EA66A19925FAD00A65931 /* good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = good.png; sourceTree = "<group>"; };
+		935EA66B19925FAD00A65931 /* listen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listen.png; sourceTree = "<group>"; };
+		935EA66C19925FAD00A65931 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		935EA66D19925FAD00A65931 /* think.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = think.png; sourceTree = "<group>"; };
 		93BE6DF41990ED5800F73F01 /* RobotSara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotSara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BE6DF71990ED5800F73F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93BE6DF91990ED5800F73F01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -252,6 +260,17 @@
 			name = Recommendations;
 			sourceTree = "<group>";
 		};
+		935EA66919925E6E00A65931 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				935EA66A19925FAD00A65931 /* good.png */,
+				935EA66B19925FAD00A65931 /* listen.png */,
+				935EA66C19925FAD00A65931 /* play.png */,
+				935EA66D19925FAD00A65931 /* think.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		93BE6DEB1990ED5800F73F01 = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +313,7 @@
 		93BE6DFD1990ED5800F73F01 /* RobotSara */ = {
 			isa = PBXGroup;
 			children = (
+				935EA66919925E6E00A65931 /* Images */,
 				932B5D22199130B600CF56C7 /* Classes */,
 				932B5D14199112A700CF56C7 /* Views */,
 				932B5D131991129B00CF56C7 /* Controllers */,
@@ -412,9 +432,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				935EA66F19925FAD00A65931 /* listen.png in Resources */,
+				935EA66E19925FAD00A65931 /* good.png in Resources */,
 				93BE6E101990ED5800F73F01 /* Images.xcassets in Resources */,
 				93BE6E021990ED5800F73F01 /* InfoPlist.strings in Resources */,
+				935EA67119925FAD00A65931 /* think.png in Resources */,
 				93BE6E0B1990ED5800F73F01 /* Main.storyboard in Resources */,
+				935EA67019925FAD00A65931 /* play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

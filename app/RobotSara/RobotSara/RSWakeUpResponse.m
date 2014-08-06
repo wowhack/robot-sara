@@ -16,6 +16,7 @@
         // Currently only supports "good" responses, let's stay positive :)
         phrases = @[@"I'm good thank you sarah, how are you?",
                     @"how are you",
+                    @"I'm good how you doing",
                     @"I'm good how are you",
                     @"I'm good thank you",
                     @"I'm good thanks",

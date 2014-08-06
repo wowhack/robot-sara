@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8F396AD7B5CA4464A0BC44FC"
+               BlueprintIdentifier = "9EB1C54AA338442BB936BEC5"
                BuildableName = "libPods-RobotSara-AFNetworking.a"
                BlueprintName = "Pods-RobotSara-AFNetworking"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -9,6 +9,7 @@
 #import "RSViewController.h"
 #import "RSBrain.h"
 #import "RSAppDelegate.h"
+#import <POP.h>
 
 const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0x8d, 0x32, 0x46, 0x25, 0x85, 0x6f, 0x43, 0x67, 0x9e, 0xbe, 0x47, 0xde, 0x9c, 0x50, 0xcb, 0x1b, 0x2f, 0x4a, 0x38, 0x13, 0x59, 0x36, 0x6c, 0x51, 0x12, 0x99, 0x63, 0xc9, 0x6b, 0xf4, 0xaf, 0xf8, 0x26, 0xf5, 0x1d, 0xab, 0x65, 0x60, 0x13, 0x03, 0x1e, 0x5a, 0xe1, 0xbb, 0xaa, 0xac, 0xd6, 0xda, 0xf7, 0x0e, 0xed, 0x50, 0x44, 0x59, 0xa1, 0x56, 0xf3, 0x04, 0x20};
 
@@ -23,17 +24,46 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+ 
+    [self addCircle];
     [self setupSpotifySessionStateChangeObserver];
     [self setupNotificationObservers];
     [self setupBrain];
     [self setupSpeechKit];
 }
 
-//event handler when event occurs
--(void)eventHandler: (NSNotification *) notification
-{ 
-    NSLog(@"event triggered");
+- (void)addCircle
+{
+    CGFloat lineWidth = 10.f;
+    CGFloat radius = CGRectGetWidth(self.view.bounds)/4 - lineWidth/2;
+    self.circleLayer = [CAShapeLayer layer];
+    CGRect rect = CGRectMake(85, 150, radius * 2, radius * 2);
+    self.circleLayer.path = [UIBezierPath bezierPathWithRoundedRect:rect
+                                                       cornerRadius:radius].CGPath;
+    
+    self.circleLayer.strokeColor = [[UIColor blackColor] CGColor];
+    self.circleLayer.fillColor = nil;
+    self.circleLayer.lineWidth = lineWidth;
+    self.circleLayer.lineCap = kCALineCapRound;
+    self.circleLayer.lineJoin = kCALineJoinRound;
+    
+    [self.view.layer addSublayer:self.circleLayer];
+    
+    [self animateCircleTo:0.0f];
+}
+
+- (void)animateCircleTo:(float)point
+{
+    if (point > 0) {
+        self.stateImage.hidden = NO;
+    }
+    
+    POPSpringAnimation *strokeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPShapeLayerStrokeEnd];
+    strokeAnimation.toValue = @(point);
+    strokeAnimation.springBounciness = 20.f;
+    strokeAnimation.springSpeed = 20.0f;
+    strokeAnimation.removedOnCompletion = NO;
+    [self.circleLayer pop_addAnimation:strokeAnimation forKey:@"layerStrokeAnimation"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -162,6 +192,28 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
      selector:@selector(eventHandler:)
      name:@"SaraDisappear"
      object:nil ];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(eventHandler:)
+     name:@"PlayingAudio"
+     object:nil ];
+}
+
+//event handler when event occurs
+-(void)eventHandler: (NSNotification *) notification
+{
+    NSString *name = [notification name];
+    if ([name isEqualToString:@"SaraAppear"]) {
+        [self animateCircleTo:1.0f];
+    } else if ([name isEqualToString:@"SaraDisappear"]) {
+        [self animateCircleTo:0.0f];
+        self.stateImage.hidden = YES;
+    } else if ([name isEqualToString:@"PlayingAudio"]) {
+        self.stateImage.image = [UIImage imageNamed:@"play"];
+    }
+
+    NSLog(@"event triggered");
 }
 
 - (void)setupBrain
@@ -241,15 +293,19 @@ const unsigned char SpeechKitApplicationKey[] = {0x12, 0xb7, 0xd1, 0x90, 0xe6, 0
     switch (transactionState) {
         case TS_IDLE:
             stateText = @"Idle";
+            self.stateImage.image = [UIImage imageNamed:@"listen"];
             break;
         case TS_INITIAL:
             stateText = @"Initial";
+            self.stateImage.image = [UIImage imageNamed:@"listen"];
             break;
         case TS_PROCESSING:
             stateText = @"Processing";
+            self.stateImage.image = [UIImage imageNamed:@"think"];
             break;
         case TS_RECORDING:
             stateText = @"Recording";
+            self.stateImage.image = [UIImage imageNamed:@"listen"];
         default:
             break;
     }

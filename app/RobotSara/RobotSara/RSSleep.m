@@ -33,6 +33,10 @@
 
 - (void)didFinishSpeakingString
 {
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"SaraDisappear"
+     object:nil ];
+    
     RSRoboticArm *roboticArm = [RSRoboticArm new];
     roboticArm.delegate = self;
     [roboticArm performAction:@"sleep" seconds:2];

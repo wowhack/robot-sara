@@ -20,14 +20,17 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - pop (1.0.6)
   - StringScore (0.0.1)
 
 DEPENDENCIES:
   - AFNetworking
+  - pop (~> 1.0)
   - StringScore
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  pop: e518794da38942c05255eb64b36d894e70cb4f00
   StringScore: 54d0365e81b82744d1c0cbafdceb14979c1091ce
 
 COCOAPODS: 0.33.1

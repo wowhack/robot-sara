@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-RobotSara-pop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-RobotSara.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>68181135FA2C4592AFD9D179</key>
+		<key>3E83F6D7367E4935BEB7D1A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F396AD7B5CA4464A0BC44FC</key>
+		<key>4568EACFD94A48B5A2C64094</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D2405D2B8B74440BBAE474D9</key>
+		<key>8D01E59716C94BFA8697FFB5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9EB1C54AA338442BB936BEC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

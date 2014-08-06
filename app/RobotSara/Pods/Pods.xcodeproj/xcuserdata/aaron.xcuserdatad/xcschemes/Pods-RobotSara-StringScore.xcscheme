@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "68181135FA2C4592AFD9D179"
+               BlueprintIdentifier = "8D01E59716C94BFA8697FFB5"
                BuildableName = "libPods-RobotSara-StringScore.a"
                BlueprintName = "Pods-RobotSara-StringScore"
                ReferencedContainer = "container:Pods.xcodeproj">

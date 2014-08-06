@@ -53,6 +53,10 @@
                                     <action selector="audioSwitch:" destination="vXZ-lx-hvc" eventType="valueChanged" id="7Mj-6s-ooR"/>
                                 </connections>
                             </switch>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Qd-MN-VY4">
+                                <rect key="frame" x="116" y="181" width="89" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -61,6 +65,7 @@
                         <outlet property="audioSwitch" destination="VgF-lM-nHp" id="INI-MP-ho6"/>
                         <outlet property="debugLabel" destination="Tf7-Cd-oTc" id="KD1-dI-WQk"/>
                         <outlet property="resultsLabel" destination="a6O-bc-KFv" id="jLK-LQ-9RC"/>
+                        <outlet property="stateImage" destination="9Qd-MN-VY4" id="kyV-ki-ZmV"/>
                         <outlet property="stateLabel" destination="Pdp-15-02Q" id="qxP-kt-Laa"/>
                         <outlet property="suggestionsLabel" destination="sFo-ne-kVn" id="VeK-EX-sIr"/>
                     </connections>

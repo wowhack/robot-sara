@@ -64,7 +64,10 @@
 
 - (void)didFinishSpeakingString
 {
-    // TODO: go to recommendations service for artist and play count
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"PlayingAudio"
+     object:nil ];
+    
     RSSpotify *player = [RSSpotify new];
     player.delegate = self;
     [player playTrackByArtist:_artist];
