@@ -16,7 +16,8 @@
     if (self = [super init]) {
         phrases = @[@"go to sleep sarah",
                     @"go to sleep",
-                    @"go sleep"];
+                    @"go sleep",
+                    @"sleep"];
     }
     return self;
 }
